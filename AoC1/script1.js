@@ -2,12 +2,12 @@ const fs = require("fs");
 const data = fs.readFileSync(`${__dirname}/input1.txt`).toString();
 
 //remove empty lines and create a string
-const newData = data.split("\r\n").toString();
-console.log(newData);
+const newData = data.split("\n").toString();
+// console.log(newData);
 
 //separate string into groups
 const groups = newData.split(",,");
-console.log(groups);
+// console.log(groups);
 
 //group strings into arrays of numbers (filter to account for empty space after last element)
 const groupedNumbers = groups.map((group) =>
@@ -16,7 +16,7 @@ const groupedNumbers = groups.map((group) =>
     .filter(Boolean)
     .map((group) => parseInt(group))
 );
-console.log(groupedNumbers);
+// console.log(groupedNumbers);
 
 //sum up each array
 const sumsArr = groupedNumbers.map((array) =>
@@ -24,7 +24,7 @@ const sumsArr = groupedNumbers.map((array) =>
     return acc + cur;
   }, 0)
 );
-console.log(sumsArr);
+// console.log(sumsArr);
 
 //PART 1//
 

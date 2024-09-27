@@ -2,69 +2,70 @@ const fs = require("fs");
 const data = fs
   .readFileSync(`${__dirname}/input3.txt`)
   .toString()
-  .split("\r\n")
+  .split("\n")
   .filter(Boolean);
-/*  .map((data) => data.split("")); */
 
-/* console.log(data); */
+// console.log(data);
 
-/* let sameElementsArray = [];
-let total = 0;
+const eachCharacter = data.map((data) => data.split(""));
 
-data.map((array) => {
+const sameCharacter = [];
+let firstTotal = 0;
+
+eachCharacter.map((array) => {
   const twoPartArray = [];
-  console.log(twoPartArray); 
+  // console.log(twoPartArray);
 
-  let part1 = array.slice(0, array.length / 2);
-  let part2 = array.slice(array.length / 2, array.length);
+  const part1 = array.slice(0, array.length / 2);
+  const part2 = array.slice(array.length / 2, array.length);
 
   twoPartArray.push(part1, part2);
-  console.log(twoPartArray); 
+  // console.log(twoPartArray);
 
   const sameElement = [
     ...new Set(part1.filter((element) => part2.includes(element))),
   ];
-  sameElementsArray.push(sameElement);
+  sameCharacter.push(sameElement);
 });
 
-console.log(sameElementsArray); 
+// console.log(sameCharacter);
 
-sameElementsArray.map((element) => {
+sameCharacter.map((element) => {
   const arrayCharacter = element.toString();
-  console.log(arrayCharacter);
+  // console.log(arrayCharacter);
 
   const charCode = arrayCharacter.charCodeAt(0);
-  console.log(charCode); 
+  // console.log(charCode);
 
   //lowerCaseValues -> a-z (97 - 122)
   //upperCaseValues -> A-Z (65 - 90)
 
   if (charCode >= 97 && charCode <= 122) {
-    total += charCode - 97 + 1;
+    firstTotal += charCode - 97 + 1;
   }
   if (charCode >= 65 && charCode <= 90) {
-    total += charCode - 65 + 27;
+    firstTotal += charCode - 65 + 27;
   }
 });
 
-console.log(total); */
+console.log(firstTotal);
 
 //PART 2
 /* console.log(data); */
 
-let size = 3;
-let separatedArray = [];
-let sameElementsArray = [];
-let total = 0;
+const size = 3;
+const threePartArray = [];
+const sameElementsArray = [];
+let secondTotal = 0;
 
 while (data.length > 0) {
-  piece = data.splice(0, size);
-  /*  console.log(piece); */
-  separatedArray.push(piece);
+  const piece = data.splice(0, size);
+  // console.log(piece);
+  threePartArray.push(piece);
 }
-/* console.log(separatedArray); */
+// console.log(threePartArray);
 
-separatedArray.map((array) => {
+threePartArray.map((array) => {
   const arrays = array.map((arr) => arr.split(""));
   /* console.log(arrays); */
 
@@ -82,7 +83,7 @@ separatedArray.map((array) => {
     ),
   ];
   sameElementsArray.push(sameElement);
-  /* console.log(sameElementsArray) */
+  // console.log(sameElement);
 });
 
 /* console.log(arrays); */
@@ -100,11 +101,11 @@ sameElementsArray.map((element) => {
   //upperCaseValues -> A-Z (65 - 90)
 
   if (charCode >= 97 && charCode <= 122) {
-    total += charCode - 97 + 1;
+    secondTotal += charCode - 97 + 1;
   }
   if (charCode >= 65 && charCode <= 90) {
-    total += charCode - 65 + 27;
+    secondTotal += charCode - 65 + 27;
   }
 });
 
-console.log(total);
+console.log(secondTotal);

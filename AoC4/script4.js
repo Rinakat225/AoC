@@ -2,14 +2,14 @@ const fs = require("fs");
 const data = fs
   .readFileSync(`${__dirname}/input4.txt`)
   .toString()
-  .split("\r\n")
+  .split("\n")
   .filter(Boolean)
   .map((data) => data.split("-").join(",").split(","))
   .map((eachArr) => {
     return eachArr.map(Number);
   });
 
-/* console.log(data); */
+// console.log(data);
 
 const numberPairs = [];
 
@@ -39,7 +39,7 @@ while (range.length > 0) {
 /* console.log(pairedRanges); */
 
 //PART 1
-let total = 0;
+let firstTotal = 0;
 
 pairedRanges.map((array) => {
   const firstSet = new Set(array[0]);
@@ -48,21 +48,21 @@ pairedRanges.map((array) => {
   /* console.log(secondSet.size); */
 
   if (firstSet.size <= secondSet.size && secondSet.isSupersetOf(firstSet)) {
-    return (total += 1);
+    return (firstTotal += 1);
   } else if (
     secondSet.size <= firstSet.size &&
     firstSet.isSupersetOf(secondSet)
   ) {
-    return (total += 1);
+    return (firstTotal += 1);
   } else {
     return;
   }
 });
 
-console.log(total);
+console.log(firstTotal);
 
 //PART 2
-let total2 = 0;
+let secondTotal = 0;
 
 pairedRanges.map((array) => {
   /*   console.log(array); */
@@ -78,8 +78,8 @@ pairedRanges.map((array) => {
   const value = setIter.next().value;
 
   if (value) {
-    return (total2 += 1);
+    return (secondTotal += 1);
   }
 });
 
-console.log(total2);
+console.log(secondTotal);

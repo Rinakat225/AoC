@@ -2,9 +2,9 @@ const fs = require("fs");
 const data = fs.readFileSync(`${__dirname}/input2.txt`);
 const moves = data
   .toString()
-  .split("\r\n")
+  .split("\n")
   .map((data) => data.split(" "));
-console.log(moves);
+// console.log(moves);
 
 //PART 1
 /* 
@@ -20,36 +20,33 @@ console.log(moves);
   draw = 3points
   lose = 0points
 */
-/* const basicPoints = {X: 1, Y: 2, Z: 3,
-};
+const basicPoints = { X: 1, Y: 2, Z: 3 };
 
-const winningCombination = {A: "Y", B: "Z", C: "X",
-};
+const winningCombination = { A: "Y", B: "Z", C: "X" };
 
-const drawCombination = {A: "X", B: "Y", C: "Z",
-};
+const drawCombination = { A: "X", B: "Y", C: "Z" };
 
-let totalScoreMe = 0;
+let firstTotal = 0;
 
 moves.map((array) => {
-  console.log(array);
+  // console.log(array);
 
   const elf = array[0];
   const me = array[1];
-  console.log(me);
+  // console.log(me);
 
-  totalScoreMe += basicPoints[me];
+  firstTotal += basicPoints[me];
 
   if (winningCombination[elf] === me) {
-    console.log(winningCombination[elf], me);
-    totalScoreMe += 6;
+    // console.log(winningCombination[elf], me);
+    firstTotal += 6;
   } else if (drawCombination[elf] === me) {
-    totalScoreMe += 3;
+    firstTotal += 3;
   } else {
-    totalScoreMe += 0;
+    firstTotal += 0;
   }
 });
-console.log(totalScoreMe); */
+console.log(firstTotal);
 
 //PART 2
 /* 
@@ -80,14 +77,14 @@ const gameCombination = {
   },
 };
 
-let totalScoreMe2 = 0;
+let secondTotal = 0;
 moves.map((array) => {
   const elf = array[0];
   const me = array[1];
 
   const myMove = gameCombination[elf][me];
 
-  totalScoreMe2 = totalScoreMe2 + basicPoints2[myMove];
-  totalScoreMe2 = totalScoreMe2 + outcomePoints[me];
+  secondTotal = secondTotal + basicPoints2[myMove];
+  secondTotal = secondTotal + outcomePoints[me];
 });
-console.log(totalScoreMe2);
+console.log(secondTotal);
